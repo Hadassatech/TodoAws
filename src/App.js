@@ -10,11 +10,12 @@ import {
 import { listTodos } from './graphql/queries';
 import { orderObjByDate } from './helper';
 import Logo from './logo.svg';
+import { TodoList } from './conponents/TodoList./TodoList';
 
 const initialFormState = { name: '', description: '' };
 
 function App({ signOut }) {
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
   console.log(todos);
 
@@ -64,19 +65,19 @@ function App({ signOut }) {
     }
   }
 
-  async function deleteTodo({ id }) {
-    try {
-      const newTodosArray = todos.filter((note) => note.id !== id);
-      setTodos(orderObjByDate('createdAt', newTodosArray));
-      await API.graphql({
-        query: deleteTodoMutation,
-        variables: { input: { id } },
-        authMode: 'AMAZON_COGNITO_USER_POOLS',
-      });
-    } catch (err) {
-      console.error(`Something was wrong: ${err.message}`);
-    }
-  }
+  // async function deleteTodo({ id }) {
+  //   try {
+  //     const newTodosArray = todos.filter((note) => note.id !== id);
+  //     setTodos(orderObjByDate('createdAt', newTodosArray));
+  //     await API.graphql({
+  //       query: deleteTodoMutation,
+  //       variables: { input: { id } },
+  //       authMode: 'AMAZON_COGNITO_USER_POOLS',
+  //     });
+  //   } catch (err) {
+  //     console.error(`Something was wrong: ${err.message}`);
+  //   }
+  // }
 
   async function onChange(e) {
     try {
@@ -121,7 +122,8 @@ function App({ signOut }) {
           justifyContent: 'center',
         }}
       >
-        {todos?.map((todo) => (
+        <TodoList todos={todos}/>
+        {/* {todos?.map((todo) => (
           <div key={todo.id || todo.name} className='todo-card'>
             <div style={{ textAlign: 'center' }}>
               <h2>{todo.name}</h2>
@@ -143,7 +145,7 @@ function App({ signOut }) {
               <button onClick={() => deleteTodo(todo)}>Delete todo</button>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
       <button onClick={signOut} className='sign-out-btn'>
         Sign Out

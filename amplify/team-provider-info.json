@@ -16,5 +16,29 @@
         "todolistreactaws05104c24": {}
       }
     }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-todolistreactaws-dev-184619-authRole",
+      "UnauthRoleArn": "arn:aws:iam::958473424901:role/amplify-todolistreactaws-dev-184619-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::958473424901:role/amplify-todolistreactaws-dev-184619-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-todolistreactaws-dev-184619-deployment",
+      "UnauthRoleName": "amplify-todolistreactaws-dev-184619-unauthRole",
+      "StackName": "amplify-todolistreactaws-dev-184619",
+      "StackId": "arn:aws:cloudformation:us-east-1:958473424901:stack/amplify-todolistreactaws-dev-184619/f73fb250-9d98-11ed-91db-0e2e23c1a04f",
+      "AmplifyAppId": "ds1wryt7xl17z"
+    },
+    "categories": {
+      "auth": {
+        "todolistreactaws05104c24": {}
+      },
+      "api": {
+        "todolist": {}
+      },
+      "storage": {
+        "imagestorage": {}
+      }
+    }
   }
 }
