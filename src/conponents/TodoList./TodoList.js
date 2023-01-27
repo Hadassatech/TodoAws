@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { listTodos } from './graphql/queries';
-import { orderObjByDate } from './helper';
-import './App.css';
+// import { orderObjByDate } from '././helper';
 import {
     createTodo as createTodoMutation,
     deleteTodo as deleteTodoMutation,
-} from './graphql/mutations';
+} from './././graphql/mutations';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { API, Storage } from 'aws-amplify';
+import axios from 'axios';
 
-export const TodoList = ({ todos }) => {
+export const TodoList = ({  }) => {
     const [todos, setTodos] = useState([]);
-
+    const [weather, setWeather] = useState(null);
     async function deleteTodo({ id }) {
         try {
             const newTodosArray = todos.filter((note) => note.id !== id);
-            setTodos(orderObjByDate('createdAt', newTodosArray));
+            // setTodos(orderObjByDate('createdAt', newTodosArray));
+            setTodos(newTodosArray);
+
             await API.graphql({
                 query: deleteTodoMutation,
                 variables: { input: { id } },
@@ -26,6 +27,7 @@ export const TodoList = ({ todos }) => {
             console.error(`Something was wrong: ${err.message}`);
         }
     }
+
     return (
         <>
             {
