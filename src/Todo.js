@@ -7,8 +7,9 @@ import {
 } from './graphql/mutations';
 import '@aws-amplify/ui-react/styles.css';
 import { API, Storage } from 'aws-amplify';
+import './Todo.css';
 
-export const Todo = ({ todo, todos, setTodos}) => {
+export const Todo = ({ todo, todos, setTodos }) => {
     const [weather, setWeather] = useState("");
     const [isEditing, setIsEditing] = useState(false);
     const [editTodoData, setEditTodoData] = useState({
@@ -25,7 +26,6 @@ export const Todo = ({ todo, todos, setTodos}) => {
                 const data = await response.json();
                 if (data && data.location) {
                     setWeather(data.current.weather_descriptions[0]);
-                    console.log("wwwwwwwwwwww", weather)
                 }
             } catch (err) {
                 console.error(err);
@@ -77,7 +77,7 @@ export const Todo = ({ todo, todos, setTodos}) => {
             console.error(`Something was wrong: ${err.message}`);
         }
     }
-  
+
     return (
         <div key={todo.id || todo.name} className='todo-card'>
             {isEditing ?
@@ -120,7 +120,6 @@ export const Todo = ({ todo, todos, setTodos}) => {
                         {weather.length ? `weather: ${weather}` : ""}
                     </div>
                 </>}
-
         </div>
     )
 }

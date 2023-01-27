@@ -4,7 +4,6 @@ import {
     createTodo as createTodoMutation,
     deleteTodo as deleteTodoMutation,
 } from './graphql/mutations';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { API, Storage } from 'aws-amplify';
 import { Todo } from "./Todo";
@@ -35,10 +34,10 @@ export const TodoList = ({ todos, setTodos, formData, setFormData, initialFormSt
     return (
         <>
             <button onClick={createTodo}>Create Todo</button>
-            {
-                todos?.map((todo) => (
-                    <Todo todo={todo} todos={todos} setTodos={setTodos} />
-                ))
+
+            {todos?.map((todo) => (
+                <Todo todo={todo} todos={todos} setTodos={setTodos} />
+            ))
             }
         </>
     )

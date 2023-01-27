@@ -2,11 +2,11 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { API, Storage } from 'aws-amplify';
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import { listTodos } from './graphql/queries';
 import { orderObjByDate } from './helper';
 import Logo from './logo.svg';
 import { TodoList } from './TodoList';
+import './App.css';
 
 const initialFormState = { name: '', description: '' };
 
@@ -52,7 +52,6 @@ function App({ signOut }) {
     }
   }
 
-
   return (
     <div className='App App-header'>
       <img src={Logo} alt='react logo' className='App-logo' />
@@ -73,6 +72,7 @@ function App({ signOut }) {
         <input type='file' id='file-input' onChange={onChange} />
       </fieldset>
       <div className="div-center">
+        <h1>{todos.length ? "My Tasks" : "Hi, No Tasks :("}</h1>
         <TodoList todos={todos} setTodos={setTodos} formData={formData} setFormData={setFormData} initialFormState={initialFormState} />
       </div>
       <button onClick={signOut} className='sign-out-btn'>
