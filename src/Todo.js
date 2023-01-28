@@ -16,24 +16,24 @@ export const Todo = ({ todo, todos, setTodos }) => {
         name: todo.name,
         description: todo.description,
     });
-    const API_KEY = '58321739551debe0b7944e728e298d94';
-
+    const API_KEY = '8fba545bd937478096f211823232801';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://api.weatherstack.com/current?access_key=${API_KEY}&query=${todo.name}`);
+                const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${todo.name}`);
                 const data = await response.json();
-                if (data && data.location) {
-                    setWeather(data.current.weather_descriptions[0]);
+                if (data && data.location.name == todo.name) {
+                    setWeather(data.current.condition.text);
+                } else {
+                    setWeather("")
                 }
             } catch (err) {
                 console.error(err);
             }
         }
         fetchData();
-    }, [todo])
-
+    }, [todo, editTodoData.name])
 
     async function editTodo(id) {
         try {
