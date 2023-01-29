@@ -1,4 +1,8 @@
 
+![New Project (1)](https://user-images.githubusercontent.com/80362410/215334148-4dbc44fd-17d5-49d2-8c89-345ef861852f.gif)
+
+
+
 - React v.18.2.0
 - AWS Amplify CLI v.10.0.0
 
